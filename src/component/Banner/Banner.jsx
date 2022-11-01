@@ -1,8 +1,13 @@
 import { Box, Button, Container, Grid, TextField, Typography } from "@mui/material";
-import React from "react";
+import {useState} from "react";
 import banner from "../../assets/images/banner.webp";
 import PhoneIcon from '@mui/icons-material/Phone';
-const Banner = () => {
+import ModalBanner from "../modalBanner/ModalBanner";
+const Banner = ({coins}) => {
+  const [open, setOpen] =useState(false);
+  const handleModal=()=>{
+    setOpen(true)
+  }
   return (
     <Container >
       <Grid container flexDirection={"column"} alignItems={"center"} m={2} justifyContent={'center'}>
@@ -27,6 +32,7 @@ const Banner = () => {
           </Grid>
           <Grid item>
           <TextField
+              onClick={handleModal}
               id="outlined-read-only-input"
               label="انتخاب ارز"
               defaultValue="بیت کوین"
@@ -36,6 +42,7 @@ const Banner = () => {
                 readOnly: true,
               }}
             />
+            <ModalBanner open={open} setOpen={setOpen} />
           </Grid>
         </Grid>
         </Grid>
@@ -46,7 +53,7 @@ const Banner = () => {
                 <Button variant="mainButton" item sx={{minWidth:'125px',mx:'auto'}} >{"درخواست خرید"}</Button>
                 </Grid>
                 <Grid item xs={12} md={4}  >
-                <Button variant="secondaryButton" item sx={{backgroundColor:'#f2f2f2',width:'100%',minWidth:'125px'}} >{"فروش"}</Button>
+                <Button variant="secondaryButton" item sx={{backgroundColor:'secondary.main',width:'100%',minWidth:'125px'}} >{"فروش"}</Button>
                 </Grid>
             </Grid>
         </Grid>

@@ -71,6 +71,9 @@ export const theme = createTheme({
   palette:{
     primary:{
       main:"rgb(66, 133, 242)"
+    },
+    secondary:{
+      main:"#f2f2f2"
     }
   },
   shadows:{
@@ -90,7 +93,6 @@ export const theme = createTheme({
       fontSize: '1rem',
       fontWeight: 500,
       lineHeight: 1.5,
-      color: 'rgba(255, 255, 255, 0.85)'
       },
     h3: {
       //header
