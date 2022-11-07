@@ -1,8 +1,13 @@
-import Home from "./pages/Home/Home";
-
+import { RouterProvider } from "react-router-dom";
+import router from './Routes/route'
+// import CoinProvider from "./Context/CoinProvider";
+import CoinProvider from "./Context/CoinProvider";
 function App() {
   return (
-    <Home/>
+    <CoinProvider>
+      <RouterProvider router={router}/>
+    </CoinProvider>
+    
   );
 }
 

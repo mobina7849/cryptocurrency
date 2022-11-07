@@ -3,10 +3,25 @@ import {useState} from "react";
 import banner from "../../assets/images/banner.webp";
 import PhoneIcon from '@mui/icons-material/Phone';
 import ModalBanner from "../modalBanner/ModalBanner";
-const Banner = ({coins}) => {
+import { CoinContext } from "../../Context/CoinProvider";
+import { useContext } from "react";
+
+const Banner = () => {
+  const coins=useContext(CoinContext)
   const [open, setOpen] =useState(false);
+  const [inputCoin,setInputCoin]=useState({name:'',price:1})
+  const [price,setPrice]=useState(0)
+  const [inputNum,setInputNum]=useState(1)
   const handleModal=()=>{
     setOpen(true)
+  }
+  const handlechangeInputNumber=(e)=>{
+    //setInputCoin({...inputCoin,price:'',number:''})
+     setInputCoin({...inputCoin,[e.target.name]:e.target.value})
+
+  }
+  const ll=(e)=>{
+    setInputNum(e.target.value)
   }
   return (
     <Container >
@@ -20,14 +35,20 @@ const Banner = ({coins}) => {
           <TextField
           id="outlined"
           label="تومان"
-          defaultValue='0'
+          // defaultValue={coins[0]?.price}
+          name="price"
+          value={Number((inputCoin.price)*inputNum)}
+          onChange={handlechangeInputNumber}
         />
           </Grid>
           <Grid item>
           <TextField
           id="outlined"
           label="واحد"
-          defaultValue='0'
+          defaultValue={1}
+          name="number"
+          value={inputNum}
+          onChange={ll}
         />
           </Grid>
           <Grid item>
@@ -35,14 +56,17 @@ const Banner = ({coins}) => {
               onClick={handleModal}
               id="outlined-read-only-input"
               label="انتخاب ارز"
-              defaultValue="بیت کوین"
+              // defaultValue={coins[0]?.name}
+              value={inputCoin.name}
               //curser={'pointer'}
-              sx={{ cursor: "pointer" }}
+              sx={{ cursor: "pointer",paddingRight:'0' }}
               InputProps={{
                 readOnly: true,
+                startAdornment:<div style={{width:'30%' ,display:'flex',justifyContent:'center'}}><img width={'30px'} height={'30px'}   src={inputCoin.icon} /></div> 
+
               }}
             />
-            <ModalBanner open={open} setOpen={setOpen} />
+            <ModalBanner open={open} setOpen={setOpen}  setInputCoin={setInputCoin} setPrice={setPrice}/>
           </Grid>
         </Grid>
         </Grid>

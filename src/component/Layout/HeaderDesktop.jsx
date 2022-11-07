@@ -5,6 +5,7 @@ import headeritems from "../../Data/dataHeader";
 import { ReactComponent as Logo } from "../../assets/images/header-logo.svg"
 import SegmentRoundedIcon from '@mui/icons-material/SegmentRounded';
 import Divider from '@mui/material/Divider';
+import { Link } from 'react-router-dom';
 const HeaderDesktop = () => {
     return ( 
         <Grid container sx={{color:'black',width:'100%',height:'75px',justifyContent:'space-between',alignItems:'center'}}>
@@ -14,10 +15,10 @@ const HeaderDesktop = () => {
                     <Typography   >منو</Typography>
                 </Button>
                 {headeritems.map((item,index)=>(
-                    <Button variant='secondaryButton contained'>
-                       <Typography variant='button' key={index}>{item}</Typography>
+                  <Link to={item.href}  key={index}>  <Button variant='secondaryButton contained'>
+                      <Typography variant='button'>{item.name}</Typography>
                     </Button>
-
+                 </Link>
                 ))}
             </Grid>
             <Grid item sx={{height:'50px',display:'flex',justifyContent:'space-around', alignItems:'center'}}>

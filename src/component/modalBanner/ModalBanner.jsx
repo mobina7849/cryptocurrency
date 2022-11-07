@@ -1,17 +1,18 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Grid, IconButton, List } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
 import Divider from '@mui/material/Divider';
 import ModalItem from './ModalItem/ModalItem';
+import { CoinContext } from '../../Context/CoinProvider';
+import Search from '../Search/Search';
 
-const ModalBanner = ({open,setOpen}) => {
+const ModalBanner = ({open,setOpen,setInputCoin,setPrice}) => {
+   const {coins}=useContext(CoinContext);
     const handleClose = () => setOpen(false);
+    const [search,setSearch] = useState('')
     const style = {
         position: 'absolute',
         top: '50%',
@@ -47,28 +48,17 @@ const ModalBanner = ({open,setOpen}) => {
                   </IconButton>
                 </Grid>
               </Grid>
-              <Grid item  sx={{border:'1px solid #727272 ',borderRadius:'10px'}} xs={12}>
-              <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
-             <SearchIcon />
-             </IconButton>
-              <InputBase sx={{ ml: 1, flex: 1 }}
-               placeholder="جستجو"
-               inputProps={{ 'aria-label': 'search google maps' }}
-                 />
-              </Grid>
-              
+              <Search setSearch={setSearch} />
               <Grid item xs={12} marginTop={2}>
                 <Grid sx={{maxHeight:'400px',height:'100%',overflowY:'auto'}}>
                   <List>
                     {
-                      [1,2,3,4,5,6,7,8].map(i=>(
-                        <>
-                        <ModalItem/>
+                      coins?.filter(item=>(item.name.toLowerCase().includes(search))).map((item)=>(
+                      <Grid key={item.uuid}>
+                        <ModalItem coin={item} setInputCoin={setInputCoin} setOpen={setOpen} setPrice={setPrice} key={item.uuid}/>
                         <Divider variant="middle" />
-                        </>
-                        
-                      ))
-                    }
+                      </Grid>
+                      ))}
                   </List>
 
                 </Grid>
