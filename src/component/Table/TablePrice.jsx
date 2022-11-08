@@ -3,6 +3,7 @@ import {
   useMediaQuery,
   Typography,
   Container,
+  Box
 } from "@mui/material";
 import * as React from "react";
 import Paper from "@mui/material/Paper";
@@ -26,10 +27,9 @@ const TablePrice = () => {
   const [search, setSearch] = useState("");
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const { coins, setCoins } = useContext(CoinContext);
-  const [unit, setUnit] = useState(true);
+  const [unit, setUnit] = useState('Toman');
   const [status, setStatus] = useState(false);
   const [filtered, setFiltered] = useState([]);
-
   const handleStar = (id) => {
     setCoins(
       coins.map((coin) =>
@@ -45,46 +45,17 @@ const TablePrice = () => {
       setFiltered(coins);
     }
   };
+
  
   useEffect(() => {
     handleStatus();
-  }, [status, coins,filtered]);
-  // const [sorted,setSorted]=({sorted:'price',reversed:false})
-  // const handleSort=()=>{
-  //   setSorted({sorted:'price',reversed:!sorted.reversed});
-  //   const usersCopy=[...coins]
-  //   usersCopy.sort((a,b)=>{
-  //     if(sorted.reversed){
-  //       return a.price=b.price;
-  //     }
-  //     return b.price=a.price;
-  //   })
-  //   setCoins(usersCopy)
-  // }
-  // // const sorting=(col)=>{
-  //   if(sorted==='asc'){
-  //     const orderd=[...coins].sort((a,b)=>a[col].toLowerCase()>b[col].toLowerCase()? 1:-1);
-  //     setCoins(orderd)
-  //     setSorted('dsc')
-  //   }
-  //   if(sorted==="dsc"){
-  //     const orderd=[...coins].sort((a,b)=>a[col].toLowerCase()<b[col].toLowerCase()? 1:-1);
-  //     setCoins(orderd);
-  //     setSorted('asc')
-  //   }
+   
+  }, [status, coins]);
 
-  // }
   return (
 
-    <Paper >
-      {/* <TableContainer
-        sx={{
-          boxShadow: "0 40px 72px hsl(0deg 0% 70% / 8%)",
-          borderRadius: "16px",
-        
-        }}
-      > */}
-        <TableLogic setSearch={setSearch} setUnit={setUnit} setStatus={setStatus} status={status} setFiltered={setFiltered} filtered={filtered}/>
+    <Box >
+        <TableLogic setSearch={setSearch} setUnit={setUnit} setStatus={setStatus} status={status} setFiltered={setFiltered} filtered={filtered}  unit={unit}/>
         <Table stickyHeader aria-label="sticky table">
         {isDesktop?
          <TableHead >
@@ -102,7 +73,7 @@ const TablePrice = () => {
              </TableCell>
            ))}
          </TableRow>
-       </TableHead>             
+        </TableHead>             
              :null   } 
           <TableBody>
             {filtered
@@ -116,8 +87,7 @@ const TablePrice = () => {
               ))}
           </TableBody>
         </Table>
-      {/* </TableContainer> */}
-     </Paper>
+     </Box>
   );
 };
 

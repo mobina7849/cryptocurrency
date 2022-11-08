@@ -5,7 +5,7 @@ import { ReactComponent as Logo } from "../../assets/images/header-logo.svg"
 import Button from "@mui/material/Button";
 import HeadsetMicOutlinedIcon from "@mui/icons-material/HeadsetMicOutlined";
 import Stack from "@mui/material/Stack";
-import { Typography } from '@mui/material';
+import  Typography  from '@mui/material/Typography';
 const HeaderMobile = () => {
     return ( 
      <Toolbar sx={{ justifyContent: "space-between" ,px:'0'}}>
@@ -13,7 +13,6 @@ const HeaderMobile = () => {
           <Logo />
         </Box>
         <Stack direction="row" spacing={2}>
-          {/* <IconButton color="secondary" > */}
           <Button
             variant="contained"
             startIcon={<HeadsetMicOutlinedIcon />}
@@ -26,7 +25,6 @@ const HeaderMobile = () => {
           >
             <Typography variant='button' sx={{px:1}}>{"آیا نیاز به کمک دارید؟"}</Typography>
           </Button>
-          {/* </IconButton> */}
         </Stack>
       </Toolbar>
      );

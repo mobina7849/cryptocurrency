@@ -1,20 +1,14 @@
-import { Container, Grid, Paper } from "@mui/material";
+import { Box, Container, Grid, Paper } from "@mui/material";
 import TablePrice from "../../component/Table/TablePrice";
 
 
 const CurrentPrice = () => {
-    const styles = {
-        paperContainer: {
-            backgroundImage: `url(${"../../assets/images/backgroundPrice.png"})`
-        }
-    };
-
     return ( 
-        <Paper style={styles.paperContainer}>
+        <Box >
             <Container>
                 <TablePrice/>
             </Container>
-        </Paper>
+        </Box>
      );
 }
  

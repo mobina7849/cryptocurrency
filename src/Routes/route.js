@@ -1,10 +1,8 @@
  import { createBrowserRouter } from "react-router-dom";
 import Layout from "../component/Layout/Layout";
-import CurrentPrice from "../pages/CurrentPrice/CurrentPrice";
 import Home from "../pages/Home/Home";
-// import AddContact from "../pages/addContact/addContact";
-// import InfoContact from "../pages/infoContact/infoContact";
-// import Home from "../pages/Home/Home";
+import React, { Suspense } from "react";
+const CurrentPrice = React.lazy(() => import("../pages/CurrentPrice/CurrentPrice"));
  const router = createBrowserRouter([
     {
       path: "/",
@@ -15,8 +13,12 @@ import Home from "../pages/Home/Home";
           element:<Home/>
         },
         {
-          path:'CurrentPrice',
-          element:<CurrentPrice/>
+          path:'/CurrentPrice',
+          element:(
+            <Suspense fallback={<div>Loading...</div>}>
+              <CurrentPrice />
+            </Suspense>
+          ),
         }
       ]
     },

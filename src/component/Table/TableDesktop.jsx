@@ -34,9 +34,9 @@ const TableDesktop = ({coin,unit,handleStar}) => {
           </Grid>
         </TableCell>
         <TableCell sx={{ textAlign: "center" }}>
-          <Grid display={"flex"}>
+          <Grid display={"flex"} justifyContent={'center'}>
             <Typography variant="subtitle1">
-              {unit
+              {unit==='Toman'
                 ? Math.ceil(coin?.price * 34000)
                 : Math.ceil(coin?.price)}
             </Typography>
@@ -45,17 +45,17 @@ const TableDesktop = ({coin,unit,handleStar}) => {
               color={"rgba(0, 0, 0, 0.6)"}
               px={1}
             >
-              {unit ? "تومان" : "Tether"}
+              {unit==='Toman' ? "تومان" : "Tether"}
             </Typography>
           </Grid>
         </TableCell>
         <TableCell sx={{ textAlign: "left" }}>
-          <Grid display={"flex"} justifyContent={"space-evenly"}>
+          <Grid display={"flex"} justifyContent={"flex-end"}>
             <Grid item>
               <Typography variant="subtitle1" marginBottom={1}>
                 {coin?.name}
               </Typography>
-              <Grid display={"flex"}>
+              <Grid display={"flex"} justifyContent={"flex-end"} >
                 <Typography
                   variant="subtitle1"
                   color={"rgba(0, 0, 0, 0.6)"}
@@ -77,7 +77,7 @@ const TableDesktop = ({coin,unit,handleStar}) => {
                 </Typography>
               </Grid>
             </Grid>
-            <Grid item>
+            <Grid item mx={1}>
               <img
                 width={"40px"}
                 height={"40px"}

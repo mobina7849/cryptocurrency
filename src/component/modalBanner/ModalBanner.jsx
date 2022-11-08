@@ -18,7 +18,6 @@ const ModalBanner = ({open,setOpen,setInputCoin,setPrice}) => {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-       // width: 400,
         width: '100%',
         maxWidth: 520,
         bgcolor: 'background.paper',

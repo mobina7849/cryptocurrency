@@ -1,13 +1,14 @@
 import AppBar from "@mui/material/AppBar";
-import {  useMediaQuery, useTheme } from "@mui/material";
+import {  Box, useMediaQuery, useTheme } from "@mui/material";
 import HeaderDesktop from "./HeaderDesktop";
 import HeaderMobile from "./HeaderMobile";
-import { Container } from '@mui/material';
-import { Outlet } from "react-router-dom";
+import { Container,Tab,Tabs } from '@mui/material';
+import { Link, Outlet } from "react-router-dom";
 
 const Layout = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  
   return (
     <>
      <AppBar
@@ -23,6 +24,7 @@ const Layout = () => {
       </Container>
      </AppBar>
      <Outlet/>
+  
     </>
   );
 };

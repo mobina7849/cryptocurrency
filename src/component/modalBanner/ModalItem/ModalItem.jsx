@@ -2,12 +2,13 @@ import { Grid, Typography } from '@mui/material';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-const ModalItem = ({coin,setInputCoin,setOpen,setPrice}) => {
+import { useCallback } from 'react';
+const ModalItem = ({coin,setInputCoin,setOpen}) => {
    const price=Math.ceil((coin?.price)*34000)
-    const handleListItem=(coin)=>{
-        setInputCoin({name:coin.name,icon:coin.iconUrl,price:Math.ceil((coin.price)*34000),number:1})
+    const handleListItem=useCallback((coin)=>{
+        setInputCoin({name:coin.name,icon:coin.iconUrl,price:price,number:1})
         setOpen(false)
-    }
+    },[coin])
  
     return ( 
     <ListItem   component="div" disablePadding sx={{padding:1}}>

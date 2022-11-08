@@ -13,25 +13,15 @@ export const theme = createTheme({
           textAlign: 'center',
           height: 35,
           width:'100%',
-          //'@media only screen and (max-width:600px)':{
-          //  color:'#000'
-          //},
-          transition:" background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
          '&:hover': {
           backgroundColor: 'rgb(66, 133, 242)',
-         
-
          }
-
-
          }
       },        
       {
         props: {variant: 'secondaryButton'},
         style: {
          color:"#727272",
-         // backgroundColor:"#f2f2f2"
-         //width:'100%'
          borderRadius: '4px',
          height: 35
           
@@ -44,11 +34,7 @@ export const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides:{
         body: {
-        //'@media only screen and (max-width:900px)':{
-           // color:'#000'
-          //  background: '#EEE'
-        //  },
-         // background: '#EEE',
+
          boxSizing:'border-box',
          '.flexDir': {
            '@media only screen and (max-width:590px)':{
@@ -120,7 +106,6 @@ export const theme = createTheme({
     fontWeight: 400,
     lineHeight: 1.75,
     color:'#727272',
-    //textAlign:'center'
   },
 
     mobi:{

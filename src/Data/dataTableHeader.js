@@ -6,12 +6,5 @@ const columns = [
     { label: "قیمت خرید", minWidth: 100 },
     { label: " ارز دیجیتال", minWidth: 100 },
   
-    // {
-    //   id: 'density',
-    //   label: 'Density',
-    //   minWidth: 170,
-    //   align: 'right',
-    //   format: (value) => value.toFixed(2),
-    // },
   ];
   export default columns;
