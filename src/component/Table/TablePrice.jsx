@@ -1,9 +1,8 @@
 import {
   useTheme,
   useMediaQuery,
-  Typography,
-  Container,
-  Box
+  Box,
+  Grid
 } from "@mui/material";
 import * as React from "react";
 import Paper from "@mui/material/Paper";
@@ -21,6 +20,9 @@ import TableLogic from "../TableLogic/TableLogic";
 import TableDesktop from "./TableDesktop";
 import TableMobile from "./TableMobile";
 import columns from "../../Data/dataTableHeader";
+import {handlegetmodaldata} from "../../Api/api"
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 const TablePrice = () => {
   const theme = useTheme();
@@ -30,6 +32,17 @@ const TablePrice = () => {
   const [unit, setUnit] = useState('Toman');
   const [status, setStatus] = useState(false);
   const [filtered, setFiltered] = useState([]);
+  const [loading,setLoading]=useState(true)
+  const handleGetData= async()=>{
+   const data=await handlegetmodaldata()
+   setLoading(false)
+  setCoins(data.map((coin)=>({...coin,star:false})))
+  }
+  useEffect(()=>{
+
+    handleGetData()
+ 
+    },[])
   const handleStar = (id) => {
     setCoins(
       coins.map((coin) =>
@@ -41,7 +54,7 @@ const TablePrice = () => {
   const handleStatus = () => {
     if (status) {
       setFiltered(coins.filter((coin) => coin.star === true));
-    } else {
+    } else if(coins) {
       setFiltered(coins);
     }
   };
@@ -55,38 +68,45 @@ const TablePrice = () => {
   return (
 
     <Box >
+       
         <TableLogic setSearch={setSearch} setUnit={setUnit} setStatus={setStatus} status={status} setFiltered={setFiltered} filtered={filtered}  unit={unit}/>
-        <Table stickyHeader aria-label="sticky table">
-        {isDesktop?
-         <TableHead >
-         <TableRow >
-           {columns.map((col,index) => (
-             <TableCell
-               sx={{
-                 border: "none",
-                 textAlign: "center",
-                 backgroundColor: "secondary.main",
-               }}
-               key={index}
-             >
-               {col.label}
-             </TableCell>
-           ))}
-         </TableRow>
-        </TableHead>             
-             :null   } 
-          <TableBody>
-            {filtered
-              .filter((item) => item.name.toLowerCase().includes(search))
-              .map((coin) => (
-                (isDesktop?
-                  (<TableDesktop coin={coin} key={coin.uuid} handleStar={handleStar} unit={unit}/>):
-                  (<TableMobile coin={coin} key={coin.uuid} handleStar={handleStar} unit={unit}/>)
+        {loading?
+              <Grid display={'flex'} justifyContent={'center'}>
+              <CircularProgress />
+            </Grid>:
+                    <Table stickyHeader aria-label="sticky table">
+                    {isDesktop?
+                     <TableHead >
+                     <TableRow >
+                       {columns.map((col,index) => (
+                         <TableCell
+                           sx={{
+                             border: "none",
+                             textAlign: "center",
+                             backgroundColor: "secondary.main",
+                           }}
+                           key={index}
+                         >
+                           {col.label}
+                         </TableCell>
+                       ))}
+                     </TableRow>
+                    </TableHead>             
+                         :null   } 
+                      <TableBody>
+                        {filtered
+                          .filter((item) => item.name.toLowerCase().includes(search))
+                          .map((coin) => (
+                            (isDesktop?
+                              (<TableDesktop coin={coin} key={coin.uuid} handleStar={handleStar} unit={unit}/>):
+                              (<TableMobile coin={coin} key={coin.uuid} handleStar={handleStar} unit={unit}/>)
+            
+                            )
+                          ))}
+                      </TableBody>
+                    </Table>
+        }
 
-                )
-              ))}
-          </TableBody>
-        </Table>
      </Box>
   );
 };

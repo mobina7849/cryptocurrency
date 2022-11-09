@@ -34,5 +34,5 @@ export const options =axios.create({
 // } export const handlegetmodaldata =()=>{
 
   export const handlegetmodaldata =()=>{
-    return options('/coins').then(data=>data.data.data)
+    return options('/coins').then(data=>data.data.data.coins)
     }

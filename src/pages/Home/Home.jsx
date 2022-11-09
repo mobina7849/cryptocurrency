@@ -1,12 +1,17 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Banner from '../../component/Banner/Banner';
 import { options} from '../../Api/api';
 import { CoinContext } from '../../Context/CoinProvider';
+import { Grid } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
+import {handlegetmodaldata} from "../../Api/api"
 
 const Home = () => {
+  const [loading,setLoading]=useState(true)
     const {setCoins}=useContext(CoinContext)
     const handleGetData= async()=>{
-     const data=await options('/coins').then(data=>data.data.data.coins)
+     const data=await handlegetmodaldata()
+     setLoading(false)
     setCoins(data.map((coin)=>({...coin,star:false})))
     }
     useEffect(()=>{
@@ -16,7 +21,14 @@ const Home = () => {
       },[])
 
     return ( 
-        <Banner  />
+      <>
+      {loading?
+      <Grid display={'flex'} justifyContent={'center'}>
+        <CircularProgress />
+      </Grid>:
+              <Banner  />
+      }
+      </>
      );
 }
  

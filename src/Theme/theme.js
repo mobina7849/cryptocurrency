@@ -62,9 +62,6 @@ export const theme = createTheme({
       main:"#f2f2f2"
     }
   },
-  shadows:{
-
-  },
   typography:{
     fontFamily:'IRANSANS', 
     h1: {

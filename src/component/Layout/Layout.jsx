@@ -14,6 +14,7 @@ const Layout = () => {
      <AppBar
       position="static"
       sx={{ backgroundColor: "white", borderBottom: 1,height:'auto' }}
+      elevation={0}
      >
       <Container>
           {isMobile ? (
