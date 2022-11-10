@@ -71,7 +71,7 @@ const TablePrice = () => {
        
         <TableLogic setSearch={setSearch} setUnit={setUnit} setStatus={setStatus} status={status} setFiltered={setFiltered} filtered={filtered}  unit={unit}/>
         {loading?
-              <Grid display={'flex'} justifyContent={'center'}>
+              <Grid display={'flex'} justifyContent={'center'} sx={{marginTop:10}}>
               <CircularProgress />
             </Grid>:
                     <Table stickyHeader aria-label="sticky table">

@@ -9,7 +9,7 @@ const Banner = () => {
 
   return (
     <Container >
-      <Grid container flexDirection={"column"} alignItems={"center"} m={2} justifyContent={'center'}>
+      <Grid container flexDirection={"column"} alignItems={"center"} sx={{marginTop:'10px'}} justifyContent={'center'} my={'auto'} >
         <Grid item maxWidth={{ xs: "150px", md: "272px" }} m={1}>
           <img src={banner} width="100%" />
         </Grid>

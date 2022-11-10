@@ -23,7 +23,7 @@ const Home = () => {
     return ( 
       <>
       {loading?
-      <Grid display={'flex'} justifyContent={'center'}>
+      <Grid display={'flex'} justifyContent={'center'} sx={{marginTop:10}} >
         <CircularProgress />
       </Grid>:
               <Banner  />

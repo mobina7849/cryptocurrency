@@ -9,8 +9,8 @@ import  Typography  from '@mui/material/Typography';
 const HeaderMobile = () => {
     return ( 
      <Toolbar sx={{ justifyContent: "space-between" ,px:'0'}}>
-        <Box sx={{ width: "20%" }}>
-          <Logo />
+        <Box minWidth={'100px'}>
+          <Logo  />
         </Box>
         <Stack direction="row" spacing={2}>
           <Button

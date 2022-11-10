@@ -36,12 +36,12 @@ const ModalBanner = ({open,setOpen,setInputCoin,setPrice}) => {
           aria-describedby="modal-modal-description"
         >
           <Box  sx={style}>
-            <Grid container  >
-              <Grid item conatainer display={'flex'} alignItems={'center'} justifyContent={'space-between'} xs={12} marginBottom={1}>
-                <Grid item>
+            <Grid container={true} >
+              <Grid item  display={'flex'} alignItems={'center'} justifyContent={'space-between'} xs={12} marginBottom={1}>
+                <Grid >
                   <Typography variant='h2' >{"قیمت ارز"}</Typography>
                 </Grid>
-                <Grid item>
+                <Grid >
                   <IconButton onClick={handleClose} >
                     <CloseIcon sx={{ color: 'black' }}/>
                   </IconButton>
