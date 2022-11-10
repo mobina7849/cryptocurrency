@@ -67,7 +67,7 @@ const TablePrice = () => {
 
   return (
 
-    <Box >
+    <Box marginBottom={10} >
        
         <TableLogic setSearch={setSearch} setUnit={setUnit} setStatus={setStatus} status={status} setFiltered={setFiltered} filtered={filtered}  unit={unit}/>
         {loading?

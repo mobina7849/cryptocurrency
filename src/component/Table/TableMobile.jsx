@@ -8,7 +8,7 @@ import Divider from '@mui/material/Divider';
 const TableMobile = ({coin,unit,handleStar}) => {
     return ( 
       <>
-      <Grid width={'100%'} height={'100%'} alignItems={'center'} justifyContent={'space-between'} display={'flex'} my={1}>
+      <Grid width={'100%'} height={'100%'} alignItems={'center'} justifyContent={'space-between'} display={'flex'} my={1} >
         <Grid>
         <IconButton onClick={() => handleStar(coin?.uuid)} sx={{"&.MuiButtonBase-root":{padding:0}}}>
              {coin.star ? <StarIcon /> : <StarBorderIcon />}
