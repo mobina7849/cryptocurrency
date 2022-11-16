@@ -5,6 +5,7 @@ import  Typography  from "@mui/material/Typography";
 import  TableRow  from "@mui/material/TableRow";
 import  TableCell  from "@mui/material/TableCell";
 import  IconButton  from "@mui/material/IconButton";
+import LineChart from "./Chart/LineChart";
 const TableDesktop = ({coin,unit,handleStar}) => {
     return ( 
         <TableRow hover role="checkbox" tabIndex={-1} >
@@ -17,7 +18,7 @@ const TableDesktop = ({coin,unit,handleStar}) => {
           sx={{ textAlign: "center", direction: "ltr" }}
         >{`${coin.change}%`}</TableCell>
         <TableCell sx={{ textAlign: "center" }}>
-          {coin.name}
+          <LineChart coin={coin}/>
         </TableCell>
         <TableCell sx={{ textAlign: "center" }}>
           <Grid display={"flex"}>
