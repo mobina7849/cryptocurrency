@@ -118,7 +118,7 @@ const LineChart = ({coin}) => {
   };
 
     return ( 
-           <Grid width={'100%'} height={'100%'} maxHeight={50}>
+           <Grid width={'100%'} height={'100%'} maxHeight={60} maxWidth={100}>
                                   <Line options={options} data={data} />
            </Grid>
 
