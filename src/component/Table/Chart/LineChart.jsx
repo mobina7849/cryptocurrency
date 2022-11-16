@@ -104,6 +104,7 @@ const LineChart = ({coin}) => {
         data: coin.sparkline ,
         //data:moneyArr.map(item=>item.price),
       //   borderColor: 'rgb(255, 99, 132)',
+         borderWidth:1,
          borderColor: 'rgb(66, 133, 242)',
         background: ' linear-gradient(to right, #4ca1af, #c4e0e5)',
         fill: true,
